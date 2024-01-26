@@ -21,6 +21,8 @@ export const getAllTask = () => API.get('/tasks')
 export const updateTask = (data) => API.put(`/tasks/${data.id}`, { ...data.updatedTask })
 export const deleteTask = (id) => API.delete(`/tasks/${id}`)
 export const deleteAll = () => API.delete(`/tasks/deleteAll`)
+export const updateStatus = (data) => API.patch(`/tasks/status/${data.id}`, { ...data })
+
 
 
 

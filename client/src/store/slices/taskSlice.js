@@ -16,6 +16,11 @@ export const updateTask = createAsyncThunk('questions/updateTask', async (data) 
     return response.data;
 })
 
+export const updateStatus = createAsyncThunk('questions/updateStatus', async (data) => {
+    const response = await api.updateStatus(data);
+    return response.data;
+})
+
 export const deleteTask = createAsyncThunk('questions/deleteTask', async (id) => {
     const response = await api.deleteTask(id);
     return response.message;
@@ -78,6 +83,20 @@ const taskSlice = createSlice({
                 state.loading = false;
             })
             .addCase(updateTask.rejected, (state) => {
+                state.loading = false;
+                state.error = true;
+                state.data = null;
+            })
+
+            //update status...
+            .addCase(updateStatus.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(updateStatus.fulfilled, (state) => {
+                state.loading = false;
+            })
+            .addCase(updateStatus.rejected, (state) => {
                 state.loading = false;
                 state.error = true;
                 state.data = null;

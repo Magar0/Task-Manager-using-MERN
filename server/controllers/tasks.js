@@ -69,6 +69,25 @@ const updateTask = async (req, res) => {
 }
 
 
+//Update data
+const updateSpecificTaskData = async (req, res) => {
+    try {
+        const { status } = req.body;
+        const id = req.params.id;
+
+        const updatedData = await Tasks.findByIdAndUpdate(id, { status }, { new: true });
+        if (!updatedData) {
+            return res.status(404).json({ message: "Task not found" });
+        }
+
+        res.status(200).json(updatedData)
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Something went wrong" });
+    }
+}
+
+
 
 //delete data
 const deleteTask = async (req, res) => {
@@ -102,4 +121,4 @@ const deleteAllTask = async (req, res) => {
     }
 }
 
-module.exports = { postTasks, getAllTasks, getTask, updateTask, deleteTask, deleteAllTask }
+module.exports = { postTasks, getAllTasks, getTask, updateTask, updateSpecificTaskData, deleteTask, deleteAllTask }

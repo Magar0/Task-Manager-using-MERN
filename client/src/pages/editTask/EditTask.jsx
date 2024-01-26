@@ -35,12 +35,6 @@ const EditTask = () => {
     const handleDueDate = (date) => setUpdatedTask(pre => ({ ...pre, dueDate: date }))
 
 
-    useEffect(() => {
-        //     const editedItem = list.filter(ele => ele.id === parseInt(id))[0]
-        //     const date = new Date(editedItem.dueDate)
-        //     setUpdatedTask({ ...editedItem, dueDate: date })
-    }, [])
-
     return (
 
         <>

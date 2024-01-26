@@ -6,7 +6,7 @@ import { FaPlusSquare } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import { GoTrash } from "react-icons/go";
 
-import { deleteTask, fetchAllTask } from "../../store/slices/taskSlice";
+import { deleteTask, fetchAllTask, updateStatus } from "../../store/slices/taskSlice";
 
 
 const TaskItem = ({ task }) => {
@@ -19,9 +19,8 @@ const TaskItem = ({ task }) => {
     const date = new Date(dueDate)
 
     const handleStatus = () => {
-        // setStatus(!status)
-        const updated = { ...task, status: !status }
-        console.log(updated);
+        setStatus(!status)
+        dispatch(updateStatus({ id, status: !status }))
     }
 
     const handleDelete = async () => {

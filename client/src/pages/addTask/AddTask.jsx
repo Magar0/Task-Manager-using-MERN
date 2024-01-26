@@ -15,9 +15,7 @@ const AddTask = () => {
         status: false,
         dueDate: new Date()
     });
-    // const [dueDate, setDueDate] = useState(new Date())
     const navigate = useNavigate()
-    // const setList = useContext(SetListItem)
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {

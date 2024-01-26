@@ -3,7 +3,7 @@ const Tasks = require('../models/tasks')
 
 //Create data
 const postTasks = (req, res) => {
-    const { title, content, status, dueDate } = req.body;
+    const { title, content, status, dueDate, priority } = req.body;
     const user = req.userId;
 
     if (!title || !content) {
@@ -11,7 +11,7 @@ const postTasks = (req, res) => {
     } else if (title.length > 100) {
         return res.status(400).json({ message: "Title exceeds max length of 100" })
     }
-    Tasks.create({ title, content, status, dueDate, user }).then((data) => res.status(201).json(data))
+    Tasks.create({ title, content, status, dueDate, user, priority }).then((data) => res.status(201).json(data))
         .catch(err => res.status(500).json({ message: "Something went wrong" }))
 }
 
@@ -46,7 +46,7 @@ const getTask = async (req, res) => {
 const updateTask = async (req, res) => {
     try {
 
-        const { title, content, status, dueDate } = req.body;
+        const { title, content, status, dueDate, priority } = req.body;
         const user = req.userId;
         const id = req.params.id;
 
@@ -56,7 +56,7 @@ const updateTask = async (req, res) => {
             return res.status(400).json({ message: "Title exceeds max length of 100" })
         }
 
-        const updatedData = await Tasks.findByIdAndUpdate(id, { title, content }, { new: true });
+        const updatedData = await Tasks.findByIdAndUpdate(id, { title, content, status, dueDate, priority }, { new: true });
         if (!updatedData) {
             return res.status(404).json({ message: "Task not found" });
         }

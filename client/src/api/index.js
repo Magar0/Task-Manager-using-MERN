@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = process.env.REACT_APP_URL || 'http://localhost:4000'
+const URL = process.env.REACT_APP_URL || 'https://task-manager-three-silk.vercel.app/'
 const API = axios.create({ baseURL: URL })
 
 API.interceptors.request.use((req) => {

@@ -18,6 +18,9 @@ const TaskSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    priority: {
+        type: "string"
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

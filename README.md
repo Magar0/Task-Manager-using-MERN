@@ -1,6 +1,9 @@
 <h1>Task Manager</h1>
 
 # Project Overview
+
+![Task Manager](https://github.com/Magar0/Task-Manager-using-MERN/assets/35245789/307003bf-d32a-4a3e-9aad-8504a0179da2)
+
 <ul>
   <li>implemented user authentication using JWT.</li>
   <li>Users can sign up, login, logout</li>
@@ -51,7 +54,6 @@ add:- <br/>
 
 ### `npm start`
 Runs the app in the development mode.
-Open http://localhost:3000 to view it in your browser.
 
 The page will reload when you make changes.
 
